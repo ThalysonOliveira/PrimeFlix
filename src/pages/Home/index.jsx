@@ -2,6 +2,7 @@ import { useEffect, useState, } from 'react'
 import theMovieDbApi from '../../services/theMovieDbApi'
 import { Link } from 'react-router-dom'
 import './index.css'
+import Loading from '../../components/Loading'
 
 function Home() {
     const paramsUrlApi = '/movie/now_playing'
@@ -27,16 +28,14 @@ function Home() {
 
     }, [])
 
-    if(loading){
-        return <div className='loading'><h2>Carregando filmes...</h2></div>
-    }
+    if (loading) return <Loading status='Carregando filmes...' />
 
     return (
         <div className='list-movies'>
             {
                 movies.map(movie => {
                     return (
-                        <article  className='movies' key={movie.id}>
+                        <article className='movies' key={movie.id}>
                             <strong>{movie.title}</strong>
                             <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
                             <Link to={`/movie/${movie.id}`}>Acessar</Link>
