@@ -58,3 +58,10 @@
     background: var(--secondary-color);
     color: var(--primary-color);
 }
+
+.loading {
+    font-size: 1.2em;
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+    margin-top: 1em;
+}

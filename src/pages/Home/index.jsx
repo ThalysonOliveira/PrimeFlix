@@ -6,6 +6,7 @@ import './index.css'
 function Home() {
     const paramsUrlApi = '/movie/now_playing'
     const [movies, setMovies] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function loadFilmes() {
@@ -22,7 +23,13 @@ function Home() {
         }
 
         loadFilmes()
+        setLoading(false)
+
     }, [])
+
+    if(loading){
+        return <div className='loading'><h2>Carregando filmes...</h2></div>
+    }
 
     return (
         <div className='list-movies'>
