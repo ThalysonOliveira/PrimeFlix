@@ -11,14 +11,7 @@ function Home() {
 
     useEffect(() => {
         async function loadFilmes() {
-            const { data: theMovieDbApiResponse } = await theMovieDbApi.get(paramsUrlApi, {
-                params: {
-                    api_key: process.env.REACT_APP_API_KEY,
-                    language: 'pt-br',
-                    page: 1
-                }
-
-            })
+            const { data: theMovieDbApiResponse } = await theMovieDbApi.get(paramsUrlApi)
             setMovies(theMovieDbApiResponse.results.slice(0, 10))
 
         }

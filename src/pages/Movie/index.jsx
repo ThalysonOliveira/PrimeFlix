@@ -13,18 +13,14 @@ function Movie() {
 
   useEffect(() => {
     async function loadMovieDetails() {
-      await theMovieDbApi.get(`/movie/${id}`, {
-        params: {
-          api_key: process.env.REACT_APP_API_KEY,
-          language: 'pt-br',
-        }
-      }).then(movieApiDetails => {
-        setMovie(movieApiDetails.data)
-        setLoading(false)
+      await theMovieDbApi.get(`/movie/${id}`)
+        .then(movieApiDetails => {
+          setMovie(movieApiDetails.data)
+          setLoading(false)
 
-      }).catch(() => {
-        return navigation('/', { replace: true })
-      })
+        }).catch(() => {
+          return navigation('/', { replace: true })
+        })
     }
 
     loadMovieDetails()
