@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <img alt="Catalago de filmes" src="https://i.imgur.com/c3sDSag.png" width="49%" height=702px>
-  <img alt="Descrição do filme" src="https://i.imgur.com/T9tsnbz.png" width="49%" height=702px>
+  <img alt="Catalago de filmes" src="https://i.imgur.com/c3sDSag.png" width="49%" height=350px>
+  <img alt="Descrição do filme" src="https://i.imgur.com/T9tsnbz.png" width="49%" height=350px>
   
 </p>
 
