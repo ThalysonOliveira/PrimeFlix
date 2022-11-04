@@ -3,6 +3,7 @@ import './index.css'
 import theMovieDbApi from '../../services/theMovieDbApi'
 import { useCallback, useEffect, useState } from 'react'
 import Loading from '../../components/Loading'
+import { toast } from 'react-toastify'
 
 function Movie() {
   const [movie, setMovie] = useState()
@@ -39,12 +40,12 @@ function Movie() {
     const myMovieAlreadyExist = myMoviesParsed.some(myMovie => myMovie.id === movie.id)
 
     if (myMovieAlreadyExist) {
-      return alert('Filme já Adicionado')
+      return toast.warn('Este filme já esta na sua lista!')
     }
 
     myMoviesParsed.push(movie)
     localStorage.setItem('Movies', JSON.stringify(myMoviesParsed))
-    alert('Filme Salvo com Sucesso')
+    toast.success('Filme salvo com sucesso!')
   }, [movie])
 
   if (loading) return <Loading status="Carregando detalhes do filme..." />
@@ -68,8 +69,6 @@ function Movie() {
             rel='external'>Trailer</a>
         </button>
       </div>
-
-
     </div>
   )
 }
