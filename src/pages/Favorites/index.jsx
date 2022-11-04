@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 import './index.css'
 
 function Favorites() {
     const [myMoviesFavorites, setMyMoviesFavorites] = useState([])
 
     const myFavorites = localStorage.getItem('Movies')
-    const myFavoritesParsed = JSON.parse(myFavorites) || []
+    const myFavoritesParsed = useMemo(() => {
+        return JSON.parse(myFavorites) || []
+    }, [myFavorites])
 
-    useEffect(() => setMyMoviesFavorites(myFavoritesParsed), [])
+    useEffect(() => setMyMoviesFavorites(myFavoritesParsed), [myFavoritesParsed])
 
     const deleteMovieFavorite = useCallback((myFavoriteMovieId) => {
 
@@ -18,8 +21,8 @@ function Favorites() {
 
         setMyMoviesFavorites(myFavoriteMoviesFilted)
 
-        alert('Filme Apagado com sucesso')
-    }, [])
+        toast.success('Filme excluído com sucesso!')
+    }, [myFavoritesParsed])
 
     if (!myMoviesFavorites.length) return <h1>Sem filmes favoritados :)</h1>;
 
