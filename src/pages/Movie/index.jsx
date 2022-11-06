@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import './index.css'
 import theMovieDbApi from '../../services/theMovieDbApi'
 import { useCallback, useEffect, useState } from 'react'
 import Loading from '../../components/Loading'
 import { toast } from 'react-toastify'
+import { MovieDetail, AreaButtons } from './styles'
 
 function Movie() {
   const [movie, setMovie] = useState()
@@ -47,7 +47,7 @@ function Movie() {
   if (loading) return <Loading status="Carregando detalhes do filme..." />
 
   return (
-    <div className='movie-detail'>
+    <MovieDetail>
       <h1>{movie.title}</h1>
 
       <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} />
@@ -57,15 +57,15 @@ function Movie() {
 
       <strong>Avaliação: {movie.vote_average}</strong>
 
-      <div className='area-buttons'>
+      <AreaButtons>
         <button onClick={saveMovie}>Salvar</button>
         <button>
           <a href={`https://www.youtube.com/results?search_query=a${movie.title} Trailer`}
             target='blank'
             rel='external'>Trailer</a>
         </button>
-      </div>
-    </div>
+      </AreaButtons>
+    </MovieDetail>
   )
 }
 

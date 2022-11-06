@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
-import './index.css'
+import { NotFoundContainer, NotFoundItens } from './styles'
 
 function NotFound() {
   return (
-    <div className="not-found">
-      <div className='not-found-itens'>
+    <NotFoundContainer>
+      <NotFoundItens>
         <h1>Ops, pagina não encontrada</h1>
         <p>Erro 404</p>
         <Link to='/'>Voltar para a home</Link>
-      </div>
-    </div>
+      </NotFoundItens>
+    </NotFoundContainer>
   )
 }
 

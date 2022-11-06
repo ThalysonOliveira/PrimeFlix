@@ -1,4 +1,7 @@
-.header{
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+export const HeaderContainer = styled.header`
     height: 80px;
     background: var(--secondary-color);
     padding: 2em;
@@ -8,24 +11,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
 
-.logo{
-    font-size: 1.5em;
-}
-
-.header a{
+    a{
     color: var(--primary-color);
-    text-decoration: none;
-}
 
-.favorites {
+    }
+`
+
+export const Logo = styled(Link)`
+    font-size: 1.5em;
+`
+
+export const Favorites = styled(Link)`
     border: 1px solid var(--primary-color);
     padding: .8em;
     border-radius: .3em;
-}
 
-.favorites:hover{
-    background: var(--primary-color);
-    color: var(--secondary-color);
-}
+    &:hover{
+        background: var(--primary-color);
+        color: var(--secondary-color);
+    }
+`

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
-import './index.css'
+import { Tittle, FavoriteMovies, FavoriteOptions } from './styles'
 
 function Favorites() {
     const [myMoviesFavorites, setMyMoviesFavorites] = useState([])
@@ -24,23 +24,23 @@ function Favorites() {
         toast.success('Filme excluído com sucesso!')
     }, [myFavoritesParsed])
 
-    if (!myMoviesFavorites.length) return <h1>Sem filmes favoritados :)</h1>;
+    if (!myMoviesFavorites.length) return <Tittle>Sem filmes favoritados :)</Tittle>;
 
     return (
         <>
-            <h1>Meus filmes</h1>
+            <Tittle>Meus filmes</Tittle>
             {
                 myMoviesFavorites.map(movieFavorite => {
                     return (
-                        <div className='favorite-movies' key={movieFavorite.id}>
+                        <FavoriteMovies key={movieFavorite.id}>
 
                             <li >{movieFavorite.title}</li>
 
-                            <div className="favorite-options">
+                            <FavoriteOptions>
                                 <Link to={`/movie/${movieFavorite.id}`}>Ver detalhes</Link>
                                 <button onClick={() => deleteMovieFavorite(movieFavorite.id)}>Excluir</button>
-                            </div>
-                        </div>
+                            </FavoriteOptions>
+                        </FavoriteMovies>
                     )
                 })
             }

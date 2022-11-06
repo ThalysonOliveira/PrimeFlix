@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom'
-import './style.css'
+import { HeaderContainer, Logo, Favorites } from './styles'
 
 function Header() {
     return (
-        <header className="header">
-            <Link className='logo' to='/'>PrimeFlix</Link>
-            <Link className='favorites' to='/favorites'>Meus Filmes</Link>
-        </header>
+        <HeaderContainer>
+            <Logo to='/'> PrimeFlix</Logo>  
+            <Favorites to='/favorites'>Meus Filmes</Favorites>
+        </HeaderContainer>
     );
 }
 

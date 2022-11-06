@@ -1,11 +1,13 @@
-h1 {
+import styled from 'styled-components'
+
+export const Tittle = styled.h1`
     text-align: center;
     margin: 30px 0;
     font-family: 'JetBrains Mono', monospace;
-}
+`
 
-.favorite-movies {
-    display: flex;
+export const FavoriteMovies = styled.div`
+     display: flex;
     max-width: 500px;
     justify-content: space-between;
     align-items: center;
@@ -13,18 +15,16 @@ h1 {
     height: 40px;
     font-family: 'JetBrains Mono', monospace;
     font-weight: bold;
-    list-style: none;
-}
+    list-style: none;   
+`
 
-.favorite-options {
+export const FavoriteOptions = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: .5em;
-}
 
-.favorite-options a,
-button {
+    a, button {
     text-decoration: none;
     width: 120px;
     border: 1px solid;
@@ -39,10 +39,11 @@ button {
     cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
     font-weight: bold;
-}
 
-.favorite-options a:hover,
-button:hover {
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    &:hover{
+        background: var(--secondary-color);
+        color: var(--primary-color);
+    }
 }
+`
+

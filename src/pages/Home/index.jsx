@@ -1,8 +1,7 @@
 import { useEffect, useState, } from 'react'
 import theMovieDbApi from '../../services/theMovieDbApi'
-import { Link } from 'react-router-dom'
-import './index.css'
 import Loading from '../../components/Loading'
+import { ListMovies, Movies, Title, Acessar } from './styles'
 
 function Home() {
     const paramsUrlApi = '/movie/now_playing'
@@ -13,30 +12,28 @@ function Home() {
         async function loadFilmes() {
             const { data: theMovieDbApiResponse } = await theMovieDbApi.get(paramsUrlApi)
             setMovies(theMovieDbApiResponse.results.slice(0, 10))
-
         }
 
         loadFilmes()
         setLoading(false)
-
     }, [])
 
     if (loading) return <Loading status='Carregando filmes...' />
 
     return (
-        <div className='list-movies'>
+        <ListMovies>
             {
                 movies.map(movie => {
                     return (
-                        <article className='movies' key={movie.id}>
-                            <strong>{movie.title}</strong>
+                        <Movies key={movie.id}>
+                            <Title>{movie.title}</Title>
                             <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
-                            <Link to={`/movie/${movie.id}`}>Acessar</Link>
-                        </article>
+                            <Acessar to={`/movie/${movie.id}`}>Acessar</Acessar>
+                        </Movies>
                     )
                 })
             }
-        </div>
+        </ListMovies>
     )
 }
 

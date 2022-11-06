@@ -1,10 +1,10 @@
-import './index.css'
+import { LoadingContainer } from './styles'
 
 function Loading(movie) {
     return (
-        <div className='loading'>
+        <LoadingContainer>
             <h2>{movie.status}</h2>
-        </div>
+        </LoadingContainer>
     )
 }
 
