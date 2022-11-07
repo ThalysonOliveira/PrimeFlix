@@ -1,8 +1,8 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import theMovieDbApi from "../../services/theMovieDbApi";
-import Loading from "../../components/Loading";
-import { ListMovies, Movies, Title, Acessar } from "./styles";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import theMovieDbApi from '../../services/theMovieDbApi';
+import Loading from '../../components/Loading';
+import { ListMovies, Movies, Title, Acessar } from './styles';
 
 type Movie = {
   id: number;
@@ -11,7 +11,7 @@ type Movie = {
 };
 
 const Home: React.FC = () => {
-  const paramsUrlApi = "/movie/now_playing";
+  const paramsUrlApi = '/movie/now_playing';
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,11 +27,11 @@ const Home: React.FC = () => {
     setLoading(false);
   }, []);
 
-  if (loading) return <Loading status="Carregando filmes..." />;
+  if (loading) return <Loading status='Carregando filmes...' />;
 
   return (
     <ListMovies>
-      {movies.map((movie) => {
+      {movies.map(movie => {
         return (
           <Movies key={movie.id}>
             <Title>{movie.title}</Title>

@@ -1,8 +1,8 @@
-import React from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { Tittle, FavoriteMovies, FavoriteOptions } from "./styles";
+import React from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Tittle, FavoriteMovies, FavoriteOptions } from './styles';
 
 type Movie = {
   id: number;
@@ -12,7 +12,7 @@ type Movie = {
 const Favorites: React.FC = () => {
   const [myMoviesFavorites, setMyMoviesFavorites] = useState<Movie[]>([]);
 
-  const myFavorites = localStorage.getItem("Movies");
+  const myFavorites = localStorage.getItem('Movies');
   const myFavoritesParsed = useMemo(() => {
     return JSON.parse(myFavorites as string) || [];
   }, [myFavorites]);
@@ -25,11 +25,11 @@ const Favorites: React.FC = () => {
         (favoriteMovie: Movie) => favoriteMovie.id !== myFavoriteMovieId
       );
 
-      localStorage.setItem("Movies", JSON.stringify(myFavoriteMoviesFilted));
+      localStorage.setItem('Movies', JSON.stringify(myFavoriteMoviesFilted));
 
       setMyMoviesFavorites(myFavoriteMoviesFilted);
 
-      toast.success("Filme excluído com sucesso!");
+      toast.success('Filme excluído com sucesso!');
     },
     [myFavoritesParsed]
   );
@@ -40,7 +40,7 @@ const Favorites: React.FC = () => {
   return (
     <>
       <Tittle>Meus filmes</Tittle>
-      {myMoviesFavorites.map((movieFavorite) => {
+      {myMoviesFavorites.map(movieFavorite => {
         return (
           <FavoriteMovies key={movieFavorite.id}>
             <li>{movieFavorite.title}</li>

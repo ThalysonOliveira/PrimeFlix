@@ -1,5 +1,5 @@
-import React from "react";
-import { LoadingContainer } from "./styles";
+import React from 'react';
+import { LoadingContainer } from './styles';
 
 type Movie = {
   status: string;

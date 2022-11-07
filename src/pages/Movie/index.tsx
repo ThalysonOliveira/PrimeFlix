@@ -1,10 +1,10 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import theMovieDbApi from "../../services/theMovieDbApi";
-import { useCallback, useEffect, useState } from "react";
-import Loading from "../../components/Loading";
-import { toast } from "react-toastify";
-import { MovieDetail, AreaButtons } from "./styles";
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import theMovieDbApi from '../../services/theMovieDbApi';
+import { useCallback, useEffect, useState } from 'react';
+import Loading from '../../components/Loading';
+import { toast } from 'react-toastify';
+import { MovieDetail, AreaButtons } from './styles';
 
 type MovieType = {
   id: number;
@@ -24,12 +24,12 @@ const Movie: React.FC = () => {
     async function loadMovieDetails() {
       await theMovieDbApi
         .get(`/movie/${id}`)
-        .then((movieApiDetails) => {
+        .then(movieApiDetails => {
           setMovie(movieApiDetails.data);
           setLoading(false);
         })
         .catch(() => {
-          return navigation("/", { replace: true });
+          return navigation('/', { replace: true });
         });
     }
 
@@ -39,7 +39,7 @@ const Movie: React.FC = () => {
   }, [id, navigation]);
 
   const saveMovie = useCallback(() => {
-    const myMovies = localStorage.getItem("Movies");
+    const myMovies = localStorage.getItem('Movies');
 
     const myMoviesParsed = JSON.parse(myMovies as string) || [];
 
@@ -48,15 +48,15 @@ const Movie: React.FC = () => {
     );
 
     if (myMovieAlreadyExist) {
-      return toast.warn("Este filme já esta na sua lista!");
+      return toast.warn('Este filme já esta na sua lista!');
     }
 
     myMoviesParsed.push(movie);
-    localStorage.setItem("Movies", JSON.stringify(myMoviesParsed));
-    toast.success("Filme salvo com sucesso!");
+    localStorage.setItem('Movies', JSON.stringify(myMoviesParsed));
+    toast.success('Filme salvo com sucesso!');
   }, [movie]);
 
-  if (loading) return <Loading status="Carregando detalhes do filme..." />;
+  if (loading) return <Loading status='Carregando detalhes do filme...' />;
 
   return (
     <MovieDetail>
@@ -77,8 +77,8 @@ const Movie: React.FC = () => {
         <button>
           <a
             href={`https://www.youtube.com/results?search_query=a${movie?.title} Trailer`}
-            target="blank"
-            rel="external"
+            target='blank'
+            rel='external'
           >
             Trailer
           </a>
